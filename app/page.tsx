@@ -9,6 +9,8 @@ import { CountUp } from "@/components/ui/CountUp"
 
 import { createClient } from "@/lib/supabase/server"
 
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
   const supabase = await createClient()
   const { data: featuredCharities } = await supabase

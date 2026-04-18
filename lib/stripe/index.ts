@@ -16,7 +16,7 @@ export const stripe = isServer
 
 export const PLANS = {
   monthly: {
-    priceId: process.env.STRIPE_MONTHLY_PRICE_ID!,
+    priceId: process.env.STRIPE_MONTHLY_PRICE_ID || 'missing_monthly_price',
     amount: 999, // £9.99 in pence
     currency: 'gbp',
     interval: 'month' as const,
@@ -24,7 +24,7 @@ export const PLANS = {
     description: '£9.99/month',
   },
   yearly: {
-    priceId: process.env.STRIPE_YEARLY_PRICE_ID!,
+    priceId: process.env.STRIPE_YEARLY_PRICE_ID || 'missing_yearly_price',
     amount: 8900, // £89/year
     currency: 'gbp',
     interval: 'year' as const,
