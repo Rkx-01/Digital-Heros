@@ -20,7 +20,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ status: 'pending', message: 'Payment not yet confirmed' })
     }
 
-    const supabaseUUID = session.metadata?.supabaseUUID || session.subscription_data?.metadata?.supabaseUUID
+    const supabaseUUID = session.metadata?.supabaseUUID || (session as any).subscription_details?.metadata?.supabaseUUID
 
     if (!supabaseUUID) {
       return NextResponse.json({ error: 'User metadata missing from session' }, { status: 400 })
