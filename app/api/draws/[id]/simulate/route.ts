@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { generateAlgorithmicDraw, generateRandomDraw } from '@/lib/draw-engine'
 import { createClient, createStaticAdminClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'

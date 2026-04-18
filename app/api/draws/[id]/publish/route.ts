@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { calculateMatch, distributePrizes } from '@/lib/draw-engine'
 import { createClient, createStaticAdminClient } from '@/lib/supabase/server'
 import { NotificationService } from '@/lib/notifications'

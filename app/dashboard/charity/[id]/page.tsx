@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 "use client"
 
 import * as React from "react"
@@ -166,7 +167,8 @@ export default function CharityProfilePage() {
              
              {charity.upcoming_events ? (
                <div className="space-y-6">
-                 {charity.upcoming_events.split('\n').map((event: string, i: number) => (
+                 {charity.upcoming_events.split('
+').map((event: string, i: number) => (
                    <div key={i} className="flex gap-6 p-6 bg-surface-800 rounded-3xl group hover:bg-surface-700 transition-colors">
                       <div className="w-2 rounded-full bg-brand-500" />
                       <div>

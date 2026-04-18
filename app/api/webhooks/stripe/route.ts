@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { stripe } from '@/lib/stripe'
 import { createStaticAdminClient } from '@/lib/supabase/server'
 import { NotificationService } from '@/lib/notifications'

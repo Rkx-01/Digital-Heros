@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server'
 import { updateScoreSchema } from '@/lib/validations'
 import { NextResponse } from 'next/server'

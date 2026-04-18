@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { createStaticAdminClient } from '@/lib/supabase/server'
 import { createDrawSchema } from '@/lib/validations'
 import { NextResponse } from 'next/server'
