@@ -203,13 +203,13 @@ export default function AdminUserDetailPage() {
                    </div>
 
                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      {editScore?.id === s.id ? (
+                      {editScore?.id === s.id && editScore ? (
                         <div className="flex items-center gap-2">
                            <input 
                              type="number" 
                              className="w-16 h-10 bg-surface-800 border-brand-500 text-white text-center rounded-lg font-bold"
                              value={editScore.score}
-                             onChange={(e) => setEditScore({ ...editScore, score: parseInt(e.target.value) })}
+                             onChange={(e) => setEditScore({ ...editScore, score: parseInt(e.target.value) || 0 })}
                            />
                            <Button size="sm" onClick={() => handleUpdateScore(s.id, editScore.score)} isLoading={isUpdating}>
                              <Save className="w-4 h-4" />
