@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { Card, Badge } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
@@ -95,7 +96,7 @@ export default function SettingsPage() {
     setIsSavingCharity(false)
   }
 
-  if (loading) return <div className="pt-20 text-center animate-pulse text-gray-500">Loading your settings...</div>
+  if (loading) return <PageLoader text="Loading your settings..." />
 
   const isSubscribed = subscription?.status === 'active'
 

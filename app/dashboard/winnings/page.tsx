@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { createClient } from "@/lib/supabase/client"
 import { Card, Badge } from "@/components/ui/Card"
@@ -89,7 +90,7 @@ export default function WinningsPage() {
     setSubmitting(null)
   }
 
-  if (loading) return <div className="pt-20 text-center animate-pulse text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Auditing your victories...</div>
+  if (loading) return <PageLoader text="Auditing your victories..." />
 
   return (
     <div className="space-y-10 pt-4">

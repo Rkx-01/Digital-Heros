@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { useParams, useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
@@ -89,7 +90,7 @@ export default function DrawDetailPage() {
     setUploading(false)
   }
 
-  if (loading) return <div className="pt-20 text-center animate-pulse text-gray-500">Loading draw details...</div>
+  if (loading) return <PageLoader text="Loading draw details..." />
   if (!draw) return <div className="pt-20 text-center text-gray-500">Draw not found.</div>
 
   const isWinner = !!winnerRecord

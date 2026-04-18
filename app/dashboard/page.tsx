@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { createClient } from "@/lib/supabase/client"
 import { Card, Badge } from "@/components/ui/Card"
@@ -103,7 +104,7 @@ export default function DashboardPage() {
     verifyAndFetch()
   }, [fetchData, sessionId])
 
-  if (loading) return <div className="pt-20 text-center animate-pulse text-gray-500 font-bold uppercase tracking-widest leading-relaxed">Synchronizing your stats...</div>
+  if (loading) return <PageLoader text="Synchronizing your stats..." />
 
   const { profile, scores, subscription, totalWinnings, nextDraw, participation } = data
   const isSubscribed = subscription?.status === 'active'

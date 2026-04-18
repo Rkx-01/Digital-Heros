@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { useParams, useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
@@ -71,7 +72,7 @@ export default function CharityProfilePage() {
     setIsDonating(false)
   }
 
-  if (loading) return <div className="pt-20 text-center animate-pulse text-gray-500">Retrieving mission data...</div>
+  if (loading) return <PageLoader text="Retrieving mission data..." />
   if (!charity) return <div className="pt-20 text-center text-gray-500">Charity not found.</div>
 
   return (

@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
@@ -98,7 +99,7 @@ export default function CharityDashboard() {
 
   const featuredCharities = charities.filter(c => c.featured)
 
-  if (loading) return <div className="pt-20 text-center animate-pulse text-gray-500 font-bold tracking-widest uppercase text-sm">Synchronizing Mission Data...</div>
+  if (loading) return <PageLoader text="Synchronizing Mission Data..." />
 
   return (
     <div className="space-y-12 pt-4">

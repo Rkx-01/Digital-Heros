@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { Card, Badge } from "@/components/ui/Card"
 import { cn } from "@/lib/utils"
 import { CountUp } from "@/components/ui/CountUp"
+import { GradientBlinds } from "@/components/ui/GradientBlinds"
 
 import { createClient } from "@/lib/supabase/server"
 
@@ -24,27 +25,43 @@ export default async function HomePage() {
       <Navbar />
       
       {/* ── HERO SECTION ────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-white">
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0A1413]">
+        <div className="absolute inset-0 z-0 opacity-80 mix-blend-screen">
+          <GradientBlinds
+            gradientColors={['#14b8a6', '#0f766e', '#115e59']}
+            dpr={1.5}
+            angle={-15}
+            noise={0}
+            blindCount={20}
+            blindMinWidth={60}
+            spotlightRadius={0.7}
+            spotlightSoftness={1.0}
+            spotlightOpacity={0.8}
+            mouseDampening={0.15}
+            distortAmount={1}
+            shineDirection="right"
+          />
+        </div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <Badge variant="accent" className="mb-8 py-2 px-6 rounded-full bg-surface-900 text-white border-0 font-black uppercase text-[10px] tracking-[0.2em] shadow-xl">
+            <Badge variant="accent" className="mb-8 py-2 px-6 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 font-black uppercase text-[10px] tracking-[0.2em] shadow-xl">
               <Sparkles className="w-4 h-4 mr-2 text-brand-400 inline-block" /> Over £<CountUp to={52450} duration={2} /> Donated This Month
             </Badge>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-10 leading-[0.95] tracking-tighter text-surface-900">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-10 leading-[0.95] tracking-tighter text-white">
               Elevate Your Game. <br />
-              <span className="text-brand-600">Transform Global</span> Lives.
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-brand-400">Transform Global</span> Lives.
             </h1>
-            <p className="text-lg md:text-2xl text-surface-500 mb-14 max-w-3xl mx-auto leading-relaxed font-semibold tracking-tight">
+            <p className="text-lg md:text-2xl text-surface-200 mb-14 max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
               The premier platform where pure performance authorizes life-changing impact. Every score you certify scales the missions you love, while entering you into premium monthly rewards draws.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
               <Link href="/signup">
-                <Button size="lg" className="w-full sm:w-auto h-20 px-16 text-sm font-black uppercase tracking-widest rounded-2xl shadow-2xl shadow-brand-500/20 hover:shadow-brand-500/40 transition-all active:scale-95">
+                <Button size="lg" className="w-full sm:w-auto h-20 px-16 text-sm font-black uppercase tracking-widest rounded-2xl shadow-2xl shadow-brand-500/20 hover:shadow-brand-500/40 transition-all active:scale-95 bg-white text-brand-900 border-0 hover:bg-brand-50">
                   Get Started Now <ArrowRight className="ml-3 w-6 h-6" />
                 </Button>
               </Link>
               <Link href="/charities">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto h-20 px-16 text-sm font-black uppercase tracking-widest rounded-2xl border-surface-200 hover:border-surface-900 hover:bg-white">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto h-20 px-16 text-sm font-black uppercase tracking-widest rounded-2xl border-white/20 text-white bg-white/5 hover:bg-white/10 backdrop-blur-md">
                   Explore Charities
                 </Button>
               </Link>
@@ -53,9 +70,9 @@ export default async function HomePage() {
         </div>
 
         {/* Hero Visual */}
-        <div className="mt-32 px-6 max-w-7xl mx-auto">
+        <div className="mt-32 px-6 max-w-7xl mx-auto relative z-10">
           <div className="relative group">
-            <div className="relative overflow-hidden border-surface-100 rounded-[3rem] shadow-2xl bg-white p-4">
+            <div className="relative overflow-hidden border-surface-800 rounded-[3rem] shadow-2xl bg-surface-900 p-4">
               <div className="relative aspect-[21/9] overflow-hidden rounded-[2.5rem]">
                 <Image 
                   src="/impact-hero.png" 
@@ -65,7 +82,7 @@ export default async function HomePage() {
                   className="w-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-surface-900/90 via-surface-900/40 to-transparent h-full flex items-end p-10 md:p-20">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-surface-900/90 via-surface-900/40 to-transparent h-full flex items-end p-10 md:p-20 z-10">
                   <div className="flex flex-wrap gap-12 md:gap-32 w-full justify-center md:justify-start">
                     <div className="flex flex-col">
                       <span className="text-5xl md:text-7xl font-extrabold text-white tracking-tighter">4.8/5</span>
@@ -91,47 +108,47 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ────────────────────────────────────────── */}
+      {/* ── HOW IT WORKS (Emotion Driven) ────────────────────────────────────────── */}
       <section id="how-it-works" className="py-32 relative bg-surface-50/50 border-y border-surface-100">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
-            <Badge className="bg-emerald-50 text-emerald-700 border-emerald-100 font-black uppercase text-[10px] tracking-widest px-6 py-2 rounded-full mb-6">Operational Protocol</Badge>
-            <h2 className="text-5xl md:text-7xl font-extrabold mb-8 text-surface-900 tracking-tighter">Experience the Impact</h2>
-            <p className="text-surface-500 max-w-2xl mx-auto font-medium text-lg leading-relaxed">The architecture is simple. The impact is profound. Join our registry in three steps.</p>
+            <Badge className="bg-brand-50 text-brand-700 border-brand-100 font-extrabold uppercase text-[10px] tracking-widest px-6 py-2 rounded-full mb-6 transition-transform hover:scale-105">The Movement</Badge>
+            <h2 className="text-5xl md:text-7xl font-extrabold mb-8 text-surface-900 tracking-tighter">Play with Purpose</h2>
+            <p className="text-surface-500 max-w-2xl mx-auto font-medium text-lg leading-relaxed">Turn your passion into real-world change. We've built an ecosystem where your dedication directly funds the causes you care about most.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               {
                 step: "01",
-                title: "Initialize Registry",
-                desc: "Select your membership tier and pick a mission close to your heart.",
-                icon: Users,
-                color: "text-brand-600",
-                bg: "bg-white"
+                title: "Choose Your Cause",
+                desc: "Select from over 120+ vetted global missions. Your subscription is instantly routed to your chosen charity.",
+                icon: Heart,
+                color: "text-rose-500",
+                bg: "bg-rose-50"
               },
               {
                 step: "02",
-                title: "Certify Performance",
-                desc: "Log your latest 5 rounds. Our algorithm processes your data for weighted draws.",
+                title: "Track & Elevate",
+                desc: "Log your scores in our secure platform. Watch your performance improve alongside your charitable footprint.",
                 icon: Target,
                 color: "text-brand-600",
-                bg: "bg-white"
+                bg: "bg-brand-50"
               },
               {
                 step: "03",
-                title: "Authorize Impact",
-                desc: "Win certified prizes while your participation directly funds world-changing missions.",
-                icon: Heart,
-                color: "text-brand-600",
-                bg: "bg-white"
+                title: "Win Together",
+                desc: "Every verified round earns you entries into our premium monthly prize draws. When you play, everyone wins.",
+                icon: Trophy,
+                color: "text-amber-500",
+                bg: "bg-amber-50"
               }
             ].map((item, idx) => (
-              <Card key={idx} padding="none" className="relative group overflow-hidden border-surface-200 bg-white p-12 rounded-[3rem] transition-all duration-500 hover:shadow-2xl hover:border-brand-500/20" hover>
-                <div className="absolute top-8 right-10 text-8xl font-black text-surface-900 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity italic">
+              <Card key={idx} padding="none" className="relative group overflow-hidden border-surface-200 bg-white p-12 rounded-[3rem] transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 hover:border-brand-500/20" hover={false}>
+                <div className="absolute top-8 right-10 text-8xl font-black text-surface-900 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-700 italic group-hover:scale-110 transform origin-top-right">
                   {item.step}
                 </div>
-                <div className={cn("w-20 h-20 rounded-[1.5rem] flex items-center justify-center mb-10 shadow-xl shadow-surface-900/5 bg-surface-50 border border-surface-100", item.color)}>
+                <div className={cn("w-20 h-20 rounded-[1.5rem] flex items-center justify-center mb-10 shadow-xl shadow-surface-900/5 border border-surface-100 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3", item.bg, item.color)}>
                   <item.icon className="w-10 h-10" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-3xl font-extrabold mb-6 text-surface-900 tracking-tight">{item.title}</h3>
@@ -145,50 +162,56 @@ export default async function HomePage() {
       {/* ── LIVE PRIZE POOL ────────────────────────────────────────── */}
       <section id="prizes" className="py-32 bg-white">
         <div className="container mx-auto px-6">
-          <Card padding="none" className="overflow-hidden relative shadow-2xl rounded-[4rem] border-surface-200 bg-white group" hover={false}>
+          <Card padding="none" className="overflow-hidden relative shadow-[0_40px_100px_rgba(0,0,0,0.08)] rounded-[4rem] border-surface-200 bg-white group" hover={false}>
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="p-10 md:p-24 flex flex-col justify-center">
-                <Badge className="bg-surface-900 text-white border-0 w-fit mb-8 px-6 py-2 rounded-full font-black uppercase text-[10px] tracking-widest">Active Draw Cycle: April 2024</Badge>
-                <h2 className="text-5xl md:text-7xl font-extrabold mb-10 text-surface-900 tracking-tighter leading-[1.1]">The Jackpot is <br /><span className="text-brand-600 tracking-tight">£<CountUp to={42500} duration={3} /></span></h2>
+                <Badge className="bg-brand-50 text-brand-700 border-0 w-fit mb-8 px-6 py-2 rounded-full font-black uppercase text-[10px] tracking-widest hidden md:block">Monthly Impact Draw</Badge>
+                <h2 className="text-5xl md:text-7xl font-extrabold mb-10 text-surface-900 tracking-tighter leading-[1.1]">Rewards Built on <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-600">Giving.</span></h2>
                 <p className="text-xl text-surface-500 mb-12 leading-relaxed font-medium">
-                  Experience the ripple effect of every successful certification. Our community-driven prize pool grows alongside our charitable footprint.
+                  Experience the ripple effect. Because zero platform fees touch the prize pool, our community rewards grow massively alongside our charitable footprint.
                 </p>
                 <div className="flex flex-wrap gap-12">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-sm">
-                      <ShieldCheck className="text-emerald-600 w-6 h-6" strokeWidth={2.5} />
+                  <div className="flex items-center gap-4 group/icon">
+                     <div className="w-12 h-12 rounded-2xl bg-surface-50 border border-surface-100 flex items-center justify-center shadow-sm transition-transform group-hover/icon:scale-110 duration-300">
+                      <ShieldCheck className="text-surface-900 w-6 h-6" strokeWidth={2.5} />
                     </div>
-                    <span className="font-black text-surface-900 text-[10px] uppercase tracking-widest">Verified Infrastructure</span>
+                    <span className="font-black text-surface-900 text-[10px] uppercase tracking-widest">Verified Transparency</span>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center shadow-sm">
-                      <TrendingUp className="text-brand-600 w-6 h-6" strokeWidth={2.5} />
+                  <div className="flex items-center gap-4 group/icon">
+                    <div className="w-12 h-12 rounded-2xl bg-surface-50 border border-surface-100 flex items-center justify-center shadow-sm transition-transform group-hover/icon:scale-110 duration-300">
+                      <Heart className="text-brand-600 w-6 h-6" strokeWidth={2.5} />
                     </div>
-                    <span className="font-black text-surface-900 text-[10px] uppercase tracking-widest">Scalable Registry</span>
+                    <span className="font-black text-surface-900 text-[10px] uppercase tracking-widest">Guaranteed Impact</span>
                   </div>
                 </div>
                 <div className="mt-16">
                   <Link href="/signup">
-                    <Button className="px-16 h-20 rounded-2xl font-black uppercase text-sm tracking-[0.2em] shadow-2xl shadow-brand-500/20 active:scale-95 transition-all">Participate in Registry</Button>
+                    <Button className="px-16 h-20 rounded-2xl font-black uppercase text-sm tracking-[0.2em] shadow-xl shadow-brand-500/20 hover:-translate-y-1 transition-transform duration-300">Join the Community</Button>
                   </Link>
                 </div>
               </div>
-              <div className="bg-surface-900 p-12 md:p-24 flex items-center justify-center relative overflow-hidden min-h-[600px]">
-                <div className="absolute inset-0 bg-brand-500/[0.03] pointer-events-none" />
-                <div className="grid grid-cols-2 gap-8 relative z-10 w-full max-w-md">
+              <div className="bg-[#0A1413] p-12 md:p-24 flex flex-col items-center justify-center relative overflow-hidden min-h-[600px]">
+                <div className="absolute inset-0 bg-brand-500/[0.05] pointer-events-none" />
+                <div className="relative z-10 w-full mb-16 text-center">
+                   <h3 className="text-5xl font-extrabold text-white tracking-tighter">Current Jackpot</h3>
+                   <div className="text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-500 mt-4 leading-none">
+                     £<CountUp to={42500} duration={3} />
+                   </div>
+                </div>
+                <div className="grid grid-cols-4 gap-4 md:gap-8 relative z-10 w-full max-w-lg">
                   {[
-                    { val: "12", label: "Days Remaining" },
-                    { val: "08", label: "Hours" },
-                    { val: "42", label: "Minutes" },
-                    { val: "15", label: "Seconds" }
+                    { val: "12", label: "Days" },
+                    { val: "08", label: "Hrs" },
+                    { val: "42", label: "Min" },
+                    { val: "15", label: "Sec" }
                   ].map((unit, i) => (
-                    <div key={i} className="aspect-square bg-white/[0.03] border border-white/10 rounded-[2rem] flex flex-col items-center justify-center p-8 backdrop-blur-xl transition-all hover:bg-white/[0.06] hover:-translate-y-1">
-                      <span className="text-5xl md:text-6xl font-extrabold text-white tracking-tighter">{unit.val}</span>
-                      <span className="text-[10px] uppercase tracking-[0.2em] text-surface-400 font-black mt-3 transition-colors group-hover:text-brand-400">{unit.label}</span>
+                    <div key={i} className="aspect-square bg-white/[0.02] border border-white/10 rounded-[1.5rem] flex flex-col items-center justify-center p-4 backdrop-blur-xl transition-all hover:bg-white/[0.05] hover:-translate-y-2 duration-500 cursor-default">
+                      <span className="text-3xl md:text-5xl font-extrabold text-white tracking-tighter">{unit.val}</span>
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-surface-400 font-bold mt-2">{unit.label}</span>
                     </div>
                   ))}
-                  <div className="col-span-2 mt-8 text-center">
-                    <span className="text-[10px] font-black text-surface-600 uppercase tracking-[0.4em]">Official Draw Cycle Counter</span>
+                  <div className="col-span-4 mt-6 text-center">
+                    <span className="text-[10px] font-black text-surface-500 uppercase tracking-[0.4em]">Until Next Draw</span>
                   </div>
                 </div>
               </div>
@@ -197,69 +220,69 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── DRAW MECHANICS DEEP DIVE ────────────────────────────────────────── */}
+      {/* ── IMPACT & PERFORMANCE MULTIPLIER ────────────────────────────────────────── */}
       <section className="py-32 bg-surface-50/50 border-y border-surface-100">
         <div className="container mx-auto px-6">
           <div className="flex flex-col xl:flex-row gap-24 lg:items-center">
             <div className="flex-1 space-y-12">
-              <Badge className="bg-white border-surface-200 text-surface-400 font-black uppercase text-[10px] tracking-widest px-6 py-2 rounded-full">Fairness & Transparency Architecture</Badge>
+              <Badge className="bg-white border-surface-200 text-surface-500 font-black uppercase text-[10px] tracking-widest px-6 py-2 rounded-full shadow-sm">Fairness & Reward Design</Badge>
               <h2 className="text-5xl md:text-7xl font-extrabold leading-[1.05] text-surface-900 tracking-tighter">
-                Performance Weighted. <br />
-                <span className="text-brand-600 tracking-tight">Algorithmic Precision.</span>
+                Performance Meets. <br />
+                <span className="text-brand-600 tracking-tight">Philanthropy.</span>
               </h2>
               <p className="text-xl text-surface-500 leading-relaxed font-semibold tracking-tight">
-                Unlike random lotteries, GolfDraw rewards elite performance. Our custom-built verification engine uses your performance data to optimize your probability.
+                Unlike random lotteries, we actively reward your dedication. Our fairness engine ensures that consistently playing and verifying your rounds mathematically increases your weight in the draws.
               </p>
               
               <div className="space-y-10">
-                 <div className="flex gap-8">
-                   <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-xl shadow-surface-900/5 border border-surface-100 flex items-center justify-center shrink-0">
+                 <div className="flex gap-8 group/feature cursor-default">
+                   <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-lg shadow-surface-900/5 border border-surface-100 flex items-center justify-center shrink-0 transition-transform duration-500 group-hover/feature:rotate-6 group-hover/feature:scale-110">
                      <Users className="text-brand-600 w-8 h-8" strokeWidth={2.5} />
                    </div>
                    <div>
-                     <h4 className="text-xl font-extrabold mb-2 text-surface-900 tracking-tight leading-none">Standard Registry Pool</h4>
-                     <p className="text-md text-surface-500 font-medium leading-relaxed">Every certified golfer maintains a baseline probability in the monthly cycle.</p>
+                     <h4 className="text-xl font-extrabold mb-2 text-surface-900 tracking-tight leading-none transition-colors group-hover/feature:text-brand-600">The Base Impact</h4>
+                     <p className="text-md text-surface-500 font-medium leading-relaxed">Every active member maintains a solid foundation in our monthly philanthropic draws just by being subscribed.</p>
                    </div>
                  </div>
-                 <div className="flex gap-8">
-                   <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-xl shadow-surface-900/5 border border-surface-100 flex items-center justify-center shrink-0 text-amber-500">
+                 <div className="flex gap-8 group/feature cursor-default">
+                   <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-lg shadow-surface-900/5 border border-surface-100 flex items-center justify-center shrink-0 text-amber-500 transition-transform duration-500 group-hover/feature:-rotate-6 group-hover/feature:scale-110">
                      <TrendingUp className="w-8 h-8" strokeWidth={2.5} />
                    </div>
                    <div>
-                     <h4 className="text-xl font-extrabold mb-2 text-surface-900 tracking-tight leading-none">Algorithmic Boost protocol</h4>
-                     <p className="text-md text-surface-500 font-medium leading-relaxed">Top-tier performers receive an optimized probability weight in our proprietary draws.</p>
+                     <h4 className="text-xl font-extrabold mb-2 text-surface-900 tracking-tight leading-none transition-colors group-hover/feature:text-amber-600">The Dedication Multiplier</h4>
+                     <p className="text-md text-surface-500 font-medium leading-relaxed">Upload excellent, validated scorecards to receive automatic bonus entries into the jackpot.</p>
                    </div>
                  </div>
               </div>
             </div>
 
             <div className="flex-1 w-full">
-              <Card className="p-12 md:p-20 border-surface-200 bg-white shadow-[0_40px_100px_rgba(0,0,0,0.05)] rounded-[4rem] relative overflow-hidden group">
-                <div className="absolute -top-10 -right-10 p-12 opacity-[0.02] text-surface-900 transition-transform duration-1000 group-hover:scale-125">
+              <Card className="p-12 md:p-20 border-surface-200 bg-white shadow-[0_40px_100px_rgba(0,0,0,0.05)] rounded-[4rem] relative overflow-hidden group hover:border-brand-500/20 transition-all duration-700" hover={false}>
+                <div className="absolute -top-10 -right-10 p-12 opacity-[0.02] text-surface-900 transition-transform duration-1000 group-hover:scale-125 group-hover:rotate-12 group-hover:opacity-[0.04]">
                    <Sparkles className="w-64 h-64" />
                  </div>
-                <h3 className="text-3xl font-extrabold mb-12 text-surface-900 tracking-tighter leading-none">Simulation Interface</h3>
-                <div className="space-y-10">
+                <h3 className="text-3xl font-extrabold mb-12 text-surface-900 tracking-tighter leading-none">Your Reward Probability</h3>
+                <div className="space-y-10 relative z-10">
                    {[
-                     { label: "Standard Participation", weight: "1x", pct: 100, color: "bg-surface-100" },
-                     { label: "Advanced Analytics (36+ Pts)", weight: "1.2x", pct: 120, color: "bg-brand-600" },
-                     { label: "Elite Performance (40+ Pts)", weight: "1.5x", pct: 150, color: "bg-surface-900" }
+                     { label: "Subscribed Contributor", weight: "1x", pct: 100, color: "bg-surface-200" },
+                     { label: "Active Player (3+ Rounds)", weight: "1.2x", pct: 120, color: "bg-brand-400" },
+                     { label: "Elite Scoring (40+ Pts)", weight: "1.5x", pct: 150, color: "bg-surface-900" }
                    ].map((sim, i) => (
-                     <div key={i} className="space-y-4">
+                     <div key={i} className="space-y-4 group/bar">
                         <div className="flex justify-between items-end">
-                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-surface-400">{sim.label}</span>
-                          <span className="text-sm font-black text-surface-900">{sim.weight} OPS</span>
+                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-surface-500 group-hover/bar:text-surface-900 transition-colors">{sim.label}</span>
+                          <span className="text-sm font-black text-surface-900">{sim.weight} Multiplier</span>
                         </div>
-                        <div className="h-2.5 w-full bg-surface-50 rounded-full overflow-hidden p-0.5 border border-surface-100/50">
-                          <div className={cn("h-full rounded-full transition-all duration-1000 ease-out shadow-sm", sim.color)} style={{ width: `${(sim.pct / 150) * 100}%` }} />
+                        <div className="h-3 w-full bg-surface-50 rounded-full overflow-hidden p-0.5 border border-surface-100/50">
+                          <div className={cn("h-full rounded-full transition-all duration-1000 ease-out shadow-sm group-hover/bar:brightness-110", sim.color)} style={{ width: `${(sim.pct / 150) * 100}%` }} />
                         </div>
                      </div>
                    ))}
                 </div>
-                <div className="mt-16 p-8 bg-surface-50 rounded-[2.5rem] border border-surface-100 flex items-center gap-6">
+                <div className="mt-16 p-8 bg-surface-50 rounded-[2.5rem] border border-surface-100 flex items-center gap-6 relative z-10 transition-colors group-hover:bg-brand-50/50 group-hover:border-brand-100">
                    <Info className="w-6 h-6 text-brand-600 shrink-0" />
-                   <p className="text-[11px] text-surface-400 leading-relaxed font-bold tracking-tight">
-                     Weight calculations are finalized 24h prior to draw execution and are subject to audit. Simulation data for demonstration only.
+                   <p className="text-[11px] text-surface-500 leading-relaxed font-bold tracking-tight">
+                     Weights are calculated with complete transparency in your dashboard. Simulation data is for demonstration only.
                    </p>
                 </div>
               </Card>
@@ -268,27 +291,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURED CHARITIES SPOTLIGHT ────────────────────────────────────────── */}
+      {/* ── FEATURED CHARITIES SPOTLIGHT (Emotion Driven) ────────────────────────────────────────── */}
       <section id="charities" className="py-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-3xl">
-              <Badge className="bg-emerald-50 text-emerald-700 border-emerald-100 font-extrabold text-[10px] px-6 py-2 rounded-full mb-8 uppercase tracking-widest">Philanthropic Network</Badge>
-              <h2 className="text-5xl md:text-7xl font-extrabold mb-8 text-surface-900 tracking-tighter leading-none">Missions in Motion</h2>
+              <Badge className="bg-emerald-50 text-emerald-700 border-emerald-100 font-extrabold text-[10px] px-6 py-2 rounded-full mb-8 uppercase tracking-widest shadow-sm transition-transform hover:scale-105">Global Reach</Badge>
+              <h2 className="text-5xl md:text-7xl font-extrabold mb-8 text-surface-900 tracking-tighter leading-none">Missions You Make Possible</h2>
               <p className="text-xl text-surface-500 font-medium leading-relaxed max-w-2xl">
-                The world-class organizations we empower. Choose from over 120+ scrutinized missions when you register.
+                The real reward isn't just the jackpot—it's the measurable difference you create. Support over 120+ verified causes globally.
               </p>
             </div>
             <Link href="/charities">
-              <Button variant="outline" className="h-16 px-12 rounded-2xl font-black uppercase text-xs tracking-widest border-surface-200 hover:border-surface-900 transition-all">
-                Registry Directory <ArrowRight className="ml-3 w-5 h-5" />
+              <Button variant="outline" className="h-16 px-12 rounded-2xl font-black uppercase text-xs tracking-widest border-surface-200 hover:border-surface-900 hover:-translate-y-1 transition-all duration-300">
+                Explore All Causes <ArrowRight className="ml-3 w-5 h-5" />
               </Button>
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {featuredCharities?.map((charity, idx) => (
-              <Card key={idx} padding="none" className="flex flex-col h-full group bg-white border-surface-200 shadow-xl shadow-surface-900/[0.03] rounded-[3rem] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:border-brand-500/20" hover>
+              <Card key={idx} padding="none" className="flex flex-col h-full group bg-white border-surface-200 shadow-xl shadow-surface-900/[0.03] rounded-[3rem] overflow-hidden transition-all duration-700 hover:shadow-2xl hover:border-brand-500/20 hover:-translate-y-2" hover={false}>
                 <div className="relative aspect-[16/11] w-full overflow-hidden">
                   <Image 
                     src={charity.image_url || "https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=800"} 
@@ -296,19 +319,19 @@ export default async function HomePage() {
                     fill
                     className="object-cover transform transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface-900/40 to-transparent" />
-                  <Badge className="absolute top-6 right-6 bg-surface-900 text-white border-0 shadow-xl font-black uppercase text-[9px] tracking-widest px-4 py-1.5 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-900/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+                  <Badge className="absolute top-6 right-6 bg-white/20 backdrop-blur-md text-white border-0 shadow-xl font-black uppercase text-[9px] tracking-widest px-4 py-1.5 rounded-full transition-transform duration-500 group-hover:scale-105">
                     {charity.category}
                   </Badge>
                 </div>
-                <div className="p-10 flex flex-col flex-1">
-                  <h3 className="text-3xl font-extrabold mb-4 group-hover:text-brand-600 transition-colors text-surface-900 tracking-tight leading-tight">{charity.name}</h3>
+                <div className="p-10 flex flex-col flex-1 relative z-10 bg-white">
+                  <h3 className="text-3xl font-extrabold mb-4 group-hover:text-brand-600 transition-colors duration-300 text-surface-900 tracking-tight leading-tight">{charity.name}</h3>
                   <p className="text-surface-500 font-medium text-sm mb-10 line-clamp-3 leading-relaxed">
                     {charity.description}
                   </p>
                   <Link href={`/charities`}>
                     <Button variant="ghost" className="w-full justify-between group/btn text-[10px] font-black uppercase tracking-widest p-0 h-auto hover:bg-transparent hover:text-brand-600 pr-2">
-                      Registry Details <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" strokeWidth={3} />
+                      See Impact Details <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-3 transition-transform duration-500" strokeWidth={3} />
                     </Button>
                   </Link>
                 </div>
@@ -316,14 +339,14 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="mt-24 p-12 md:p-20 bg-surface-50 rounded-[4rem] border border-surface-100 flex flex-col md:flex-row items-center gap-12 text-center md:text-left transition-all hover:bg-surface-50/80">
-             <div className="w-24 h-24 bg-white rounded-[2rem] shadow-2xl shadow-brand-500/10 flex items-center justify-center shrink-0 border border-brand-50 transition-transform hover:rotate-12 duration-500">
+          <div className="mt-24 p-12 md:p-20 bg-surface-50 rounded-[4rem] border border-surface-100 flex flex-col md:flex-row items-center gap-12 text-center md:text-left transition-all duration-700 hover:bg-white hover:shadow-2xl hover:shadow-brand-500/5 group">
+             <div className="w-24 h-24 bg-white rounded-[2rem] shadow-xl shadow-brand-500/10 flex items-center justify-center shrink-0 border border-brand-50 transition-transform duration-700 group-hover:rotate-[15deg] group-hover:scale-110">
                <Heart className="w-12 h-12 text-brand-600 fill-brand-600" />
              </div>
              <div>
-               <h4 className="text-3xl font-extrabold text-surface-900 tracking-tight leading-none mb-4">Direct Impact Protocol.</h4>
-               <p className="text-xl font-medium max-w-3xl text-surface-500 leading-relaxed">
-                 The philanthropic core of GolfDraw. 20% of all platform fees are deployed directly to your choice of mission. Zero overhead. Pure impact.
+               <h4 className="text-3xl font-extrabold text-surface-900 tracking-tight leading-none mb-4 transition-colors duration-500 group-hover:text-brand-700">100% Direct Impact.</h4>
+               <p className="text-xl font-medium max-w-3xl text-surface-500 leading-relaxed transition-colors duration-500 group-hover:text-surface-600">
+                 The philanthropic core of our movement. The majority of all platform subscriptions are deployed directly to your choice of mission with absolute transparency.
                </p>
              </div>
           </div>

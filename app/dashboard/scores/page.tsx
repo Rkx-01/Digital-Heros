@@ -1,6 +1,7 @@
 "use client"
 
 
+import { PageLoader } from "@/components/ui/PageLoader"
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { Card } from "@/components/ui/Card"
@@ -121,7 +122,7 @@ export default function ScoresPage() {
 
   const isSubscribed = subscription?.status === 'active'
 
-  if (loading) return <div className="animate-pulse space-y-4 pt-10 text-center text-gray-500">Loading your profile...</div>
+  if (loading) return <PageLoader text="Loading your profile..." />
 
   return (
     <div className="space-y-12 pt-4">
