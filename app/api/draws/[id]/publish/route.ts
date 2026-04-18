@@ -123,7 +123,7 @@ export async function POST(
   try {
     const { data: { users: authUsers } } = await supabase.auth.admin.listUsers()
     const participantData = userIds.map(uid => {
-      const authUser = authUsers.find(au => au.id === uid)
+      const authUser = authUsers.find((au: any) => au.id === uid)
       const isWinner = winnerInserts.some(w => w.user_id === uid)
       return {
         email: authUser?.email || '',
