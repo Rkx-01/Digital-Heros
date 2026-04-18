@@ -1,5 +1,5 @@
-export const dynamic = 'force-dynamic';
 "use client"
+
 
 import * as React from "react"
 import { Card, Badge } from "@/components/ui/Card"
