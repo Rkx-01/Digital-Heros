@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     .select('amount_contributed')
     .is('draw_id', null)
 
-  const prizePool = poolData?.reduce((acc, curr) => acc + Number(curr.amount_contributed), 0) || 0
+  const prizePool = (poolData as any[])?.reduce((acc: number, curr: any) => acc + Number(curr.amount_contributed), 0) || 0
 
   // Get rollover from previous draw
   const { data: lastDraw, error: lastDrawError } = await supabase

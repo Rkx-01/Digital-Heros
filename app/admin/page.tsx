@@ -26,13 +26,13 @@ export default async function AdminDashboard() {
     .eq('status', 'active')
   
   const totalActiveSubs = activeSubs?.length || 0
-  const monthlyRevenue = activeSubs?.reduce((acc, curr) => acc + Number(curr.amount), 0) || 0
+  const monthlyRevenue = (activeSubs as any[])?.reduce((acc: number, curr: any) => acc + Number(curr.amount), 0) || 0
 
   const { data: prizeData } = await supabase.from('draws').select('prize_pool, rollover_amount').order('draw_date', { ascending: false }).limit(1).single()
   const currentJackpot = (Number(prizeData?.prize_pool) || 0) + (Number(prizeData?.rollover_amount) || 0)
 
   const { data: charities } = await supabase.from('charities').select('total_donated')
-  const totalDonated = charities?.reduce((acc, curr) => acc + Number(curr.total_donated), 0) || 0
+  const totalDonated = (charities as any[])?.reduce((acc: number, curr: any) => acc + Number(curr.total_donated), 0) || 0
 
   const { data: recentUsers } = await supabase
     .from('profiles')

@@ -66,7 +66,7 @@ export default function DashboardPage() {
       profile: profRes.data,
       scores: scoreRes.data || [],
       subscription: subRes.data,
-      totalWinnings: winRes.data?.reduce((acc, curr) => acc + Number(curr.prize_amount), 0) || 0,
+      totalWinnings: (winRes.data as any[])?.reduce((acc: number, curr: any) => acc + Number(curr.prize_amount), 0) || 0,
       nextDraw: nextDrawRes.data,
       participation: partRes.data || []
     })
