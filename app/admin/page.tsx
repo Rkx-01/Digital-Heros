@@ -180,8 +180,14 @@ function StatCard({ title, value, icon: Icon, color, subValue, subColor }: any) 
   )
 }
 
-function Badge({ children, className, variant = "primary" }: any) {
-  const variants: any = {
+interface LocalBadgeProps {
+  children: React.ReactNode
+  className?: string
+  variant?: "primary" | "accent" | "success" | "outline"
+}
+
+function Badge({ children, className, variant = "primary" }: LocalBadgeProps) {
+  const variants = {
     primary: "bg-brand-50 text-brand-700 border-brand-100",
     accent: "bg-surface-900 text-white border-surface-900",
     success: "bg-emerald-50 text-emerald-700 border-emerald-100",
@@ -194,8 +200,12 @@ function Badge({ children, className, variant = "primary" }: any) {
   )
 }
 
-function Button({ children, className, variant = "primary", ...props }: any) {
-  const variants: any = {
+interface LocalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "outline"
+}
+
+function Button({ children, className, variant = "primary", ...props }: LocalButtonProps) {
+  const variants = {
     primary: "bg-brand-600 text-white hover:bg-brand-700 shadow-sm",
     outline: "border border-surface-200 bg-white hover:bg-surface-50 text-surface-600",
   }

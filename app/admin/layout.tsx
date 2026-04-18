@@ -87,7 +87,12 @@ export default async function AdminLayout({
   )
 }
 
-function Button({ children, className, variant = "primary", size = "md", ...props }: any) {
+interface LocalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "outline" | "ghost"
+  size?: "sm" | "md"
+}
+
+function Button({ children, className, variant = "primary", size = "md", ...props }: LocalButtonProps) {
   const variants = {
     primary: "bg-brand-600 text-white hover:bg-brand-700",
     outline: "border border-surface-200 bg-white text-surface-900 hover:bg-surface-50",
