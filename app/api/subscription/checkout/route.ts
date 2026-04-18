@@ -50,6 +50,8 @@ export async function POST(request: Request) {
       customerId = customer.id
     }
 
+    const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       line_items: [
@@ -59,8 +61,8 @@ export async function POST(request: Request) {
         },
       ],
       mode: 'subscription',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/settings`,
+      success_url: `${origin}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/dashboard/settings`,
       metadata: {
         supabaseUUID: user.id,
       },

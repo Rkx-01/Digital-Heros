@@ -40,24 +40,42 @@ export default function SettingsPage() {
 
   async function handleCheckout(planKey: string) {
     setIsProcessing(true)
-    const res = await fetch('/api/subscription/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ planKey })
-    })
-    const data = await res.json()
-    if (data.url) window.location.href = data.url
-    setIsProcessing(false)
+    try {
+      const res = await fetch('/api/subscription/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ planKey })
+      })
+      const data = await res.json()
+      if (res.ok && data.url) {
+        window.location.href = data.url
+      } else {
+        alert('Payment setup error: ' + (data.error || 'Unknown error occurred'))
+        setIsProcessing(false)
+      }
+    } catch (e: any) {
+      alert('Network error: ' + e.message)
+      setIsProcessing(false)
+    }
   }
 
   async function handlePortal() {
     setIsProcessing(true)
-    const res = await fetch('/api/subscription/portal', {
-      method: 'POST'
-    })
-    const data = await res.json()
-    if (data.url) window.location.href = data.url
-    setIsProcessing(false)
+    try {
+      const res = await fetch('/api/subscription/portal', {
+        method: 'POST'
+      })
+      const data = await res.json()
+      if (res.ok && data.url) {
+        window.location.href = data.url
+      } else {
+        alert('Billing portal error: ' + (data.error || 'Unknown error occurred'))
+        setIsProcessing(false)
+      }
+    } catch (e: any) {
+      alert('Network error: ' + e.message)
+      setIsProcessing(false)
+    }
   }
 
   async function handleUpdateCharity() {
