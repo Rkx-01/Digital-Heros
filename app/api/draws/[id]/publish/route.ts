@@ -36,7 +36,7 @@ export async function POST(
     .select('user_id')
     .eq('status', 'active')
 
-  const userIds = activeSubscriptions?.map(s => s.user_id) || []
+  const userIds = (activeSubscriptions as any[])?.map(s => s.user_id) || []
   if (userIds.length === 0) {
     // No participants, EVERYTHING rolls over to the next draw
     const totalRollover = Number(draw.prize_pool) + Number(draw.rollover_amount)
@@ -65,7 +65,7 @@ export async function POST(
 
   // Group scores by user
   const userScoresMap: Record<string, number[]> = {}
-  allScores?.forEach(s => {
+  (allScores as any[])?.forEach(s => {
     if (!userScoresMap[s.user_id]) userScoresMap[s.user_id] = []
     userScoresMap[s.user_id].push(s.score)
   })
@@ -83,7 +83,7 @@ export async function POST(
   )
 
   // 6. Record winners
-  const winnerInserts = matchResults.map(res => ({
+  const winnerInserts = (matchResults as any[]).map(res => ({
     draw_id: drawId,
     user_id: res.userId,
     tier: res.tier,

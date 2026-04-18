@@ -36,7 +36,7 @@ export async function POST(
       .from('scores')
       .select('score')
     
-    const scoresArray = allScores?.map(s => s.score) || []
+    const scoresArray = (allScores as any[])?.map(s => s.score) || []
     numbers = generateAlgorithmicDraw(scoresArray)
   }
 
@@ -47,7 +47,7 @@ export async function POST(
     .select('user_id')
     .eq('status', 'active')
 
-  const userIds = activeSubscriptions?.map(s => s.user_id) || []
+  const userIds = (activeSubscriptions as any[])?.map(s => s.user_id) || []
   
   let simulationData = null
 
@@ -59,7 +59,7 @@ export async function POST(
       .in('user_id', userIds)
 
     const userScoresMap: Record<string, number[]> = {}
-    allScores?.forEach(s => {
+    (allScores as any[])?.forEach(s => {
       if (!userScoresMap[s.user_id]) userScoresMap[s.user_id] = []
       userScoresMap[s.user_id].push(s.score)
     })
