@@ -58,7 +58,7 @@ export async function POST(
       .select('user_id, score')
       .in('user_id', userIds)
 
-    const userScoresMap: Record<string, number[]> = {}
+    const userScoresMap: Record<string, number[]> = {};
     (allScores as any[])?.forEach(s => {
       if (!userScoresMap[s.user_id]) userScoresMap[s.user_id] = []
       userScoresMap[s.user_id].push(s.score)
