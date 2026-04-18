@@ -48,8 +48,8 @@ export async function POST(request: Request) {
 
     case 'invoice.payment_succeeded': {
       const invoice = event.data.object as Stripe.Invoice
-      if (invoice.subscription) {
-        const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string)
+      if ((invoice as any).subscription) {
+        const subscription = await stripe.subscriptions.retrieve((invoice as any).subscription as string)
         
         await supabase
           .from('subscriptions')
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
             current_period_start: new Date((subscription as any).data.current_period_start * 1000).toISOString(),
             current_period_end: new Date((subscription as any).data.current_period_end * 1000).toISOString(),
           })
-          .eq('stripe_subscription_id', invoice.subscription as string)
+          .eq('stripe_subscription_id', (invoice as any).subscription as string)
 
         // Fetch User ID and Preferences
         const { data: subData } = await supabase
