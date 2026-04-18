@@ -34,12 +34,12 @@ export async function GET(request: Request) {
       user_id: supabaseUUID,
       stripe_customer_id: session.customer as string,
       stripe_subscription_id: session.subscription as string,
-      plan: subscription.items.data[0].plan.id === process.env.STRIPE_YEARLY_PRICE_ID ? 'yearly' : 'monthly',
+      plan: (subscription as any).data.items.data[0].plan.id === process.env.STRIPE_YEARLY_PRICE_ID ? 'yearly' : 'monthly',
       status: 'active',
-      current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-      current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
-      amount: subscription.items.data[0].plan.amount! / 100,
-      currency: subscription.currency,
+      current_period_start: new Date((subscription as any).data.current_period_start * 1000).toISOString(),
+      current_period_end: new Date((subscription as any).data.current_period_end * 1000).toISOString(),
+      amount: (subscription as any).data.items.data[0].plan.amount! / 100,
+      currency: (subscription as any).data.currency,
       updated_at: new Date().toISOString()
     })
 
